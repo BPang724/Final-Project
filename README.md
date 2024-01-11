@@ -12,10 +12,32 @@
 透過藍色按壓按鈕操控板子移動去接球，讓球反彈到上面磚塊做碰撞並消除磚塊。<br>
 
 #### 程式模組說明:<br>
-module slide_game(output reg[3:0]S //控制亮燈排數,output reg [7:0]Red //紅色燈,output reg [7:0]Green //綠色燈,
-output reg [7:0]Blue //藍色燈,output reg [4:0]A_count,B_count //計分,output [6:0]O //倒計時,output reg beep //叫聲,input [1:0]button //玩家一左右,input [1:0]button2 //玩家二左右,input CLk,Clear); <br><br>
-*** 請說明各 I/O 變數接到哪個 FPGA I/O 裝置，例如: button, button2 -> 接到 4-bit SW <br>
-*** 請加強說明程式邏輯 <br>
+module divfreq(input CLK, output reg CLK_div)　//除頻器 <br>
+module divmove(input pause, input CLK, output reg CLK_div) //暫停畫面 <br>
+module Final(input CLK,
+					 input sw_L,
+					 input sw_R,
+					 input shoot,
+					 input pause,
+					 input back,
+					 output [7:0] lightR,
+					 output [7:0] lightG,
+					 output [7:0] lightB,
+					 output reg [2:0] whichCol,  //控制亮哪排
+					 output EN,
+					 output reg [3:0] A_count,
+						output a, b, c, d, e, f, g				 
+); //遊戲專案<br>
+
+lightR[0]～lightR[7]=PIN_111~PIN_121 <br>
+lightG[0]～lightG[7]=PIN_72～PIN_80 <br>
+lightB[0]～lightB[7]=PIN_135～PIN_144 <br>
+
+sw_L=PIN_65 //連接藍色按壓按鈕，板子移動<br>
+sw_R=PIN_66 //連接藍色按壓按鈕，板子移動<br>
+shoot=PIN_64 //連接藍色按壓按鈕，遊戲開始，並發射球 <br>
+abcdefg=PIN_51~PIN_59 //連接七段顯示器 <br>
+
 
 #### Demo video:<br>
-  因手機摔壞，故無影片與照片，已事前通知助教。
+因手機摔壞，故無影片與照片，已事前通知助教。
